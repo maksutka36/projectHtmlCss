@@ -14,6 +14,18 @@ export class SellersService {
   constructor() { }
 
 
+
+  getStart(){
+    if(!JSON.parse(localStorage.getItem("Sprzedawcy")!)){
+      localStorage.setItem("Sprzedawcy", JSON.stringify([
+        {id: 10, nazwa: 'Feel Good Inc.', adres:'Pergolowa 5, 20-819 Lublin'},
+        {id: 20, nazwa: 'Teen Spirit', adres:'Sławinek 57, 20-818 Lublin'},
+        {id: 30, nazwa: 'Under Pressure.', adres:'Zdrojowa 6, 20-809 Lublin'},
+      ]
+      ));
+    }
+  }
+
    getSellers(){
      return JSON.parse(localStorage.getItem("Sprzedawcy")!)
    }
