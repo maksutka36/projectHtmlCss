@@ -1,0 +1,49 @@
+<div class="edit-seller">
+    <button class="background" (click)="closeEditScreen()"></button>
+    <div class="header">
+
+    </div>
+    <form [formGroup]="editForm" (submit)="onEdit()">
+        <div class="formContent">
+            
+
+        <mat-form-field appearance="fill">
+            <mat-label>Id: {{selectedSeller.id}}</mat-label>
+            <input 
+            matInput 
+            type="text"
+            [disabled]="true">
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Nazwa</mat-label>
+            <input 
+            matInput 
+            placeholder="Nazwa" 
+            type="text"
+            autocomplete="off"
+            formControlName="name">
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Adres</mat-label>
+            <input 
+            matInput 
+            placeholder="Adres" 
+            type="text"
+            autocomplete="off"
+            formControlName="adres">
+        </mat-form-field>
+
+        
+        <button 
+        mat-raised-button
+        color="primary" 
+        [disabled]="editForm.invalid"
+        type="submit"
+        >Edytuj</button>
+
+        </div>
+    </form>
+</div>

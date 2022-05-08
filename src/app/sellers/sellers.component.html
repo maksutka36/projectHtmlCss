@@ -1,0 +1,23 @@
+<div class="listaFaktur">
+
+    <div class="columnsNames">
+        <p style="border-radius: 12px 0 0 0">Id Sprzedawcy</p>
+        <p>Nazwa</p>
+        <p>Adres</p>
+        <p>Poglad</p>
+        <p style="border-radius: 0 12px 0 0">Edycja</p>
+    </div>
+    <div *ngIf="sellersList" >
+        <div *ngFor="let item of sellersList" class="columns">
+            <p>{{item.id}}</p>
+            <p>{{item.nazwa}}</p>
+            <p>{{item.adres}}</p>
+            <button (click)="openSellerInfo(item)"><mat-icon>remove_red_eye</mat-icon></button>
+            <button (click)="openSellerEditor(item)"><mat-icon>edit</mat-icon></button>
+        </div>
+    </div>
+</div>
+
+<app-przeglad *ngIf="this.fakturaStore.showFakture"></app-przeglad>
+
+<app-edit-seller *ngIf="this.sellersService.showSellerEditor"></app-edit-seller>

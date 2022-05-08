@@ -1,0 +1,56 @@
+<div class="listaFaktur">
+    <div class="additionBar" *ngIf="role != 'Guest'">
+        <div class="filter">
+            <mat-form-field appearance="fill">
+                <mat-label>Sprzedawca</mat-label>
+                <mat-select 
+                [(value)]="filterSellers">
+                    <mat-option value="none" 
+                    (click)="onSelectFilter(1)">None</mat-option>   
+                    <div *ngFor="let item of groupSellers">  
+                        <mat-option 
+                        value="{{item.id}}"
+                        (click)="onSelectFilter(item.id)"
+                        >{{item.nazwa}}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field> 
+        </div>
+        <div class="btnSpace" *ngIf="role != 'User'">
+            <button class="addFaktureBtn" (click) = "this.fakturaStore.openAddFaktureDialog()">
+                <mat-icon >plus_one</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="columnsNames">
+        <p style="border-radius: 12px 0 0 0">Numer Faktury</p>
+        <p>Nazwa Sprzedawcy</p>
+        <p>Kwota Faktury</p>
+        <p style="border-radius: 0 12px 0 0">Przeglad</p>
+    </div>
+    <div *ngIf="listaFaktur" >
+        <div *ngFor="let item of listaFaktur" class="columns">
+            <p>{{item.numer}}</p>
+            <p>{{item.sprzedawca.nazwa}}</p>
+            <p>{{item.kwota}}$</p>
+
+            <button 
+            (click)="onShowFaktureInfo(item)"
+            [ngStyle]="{'color': role == 'Guest'? 'gray' : ''}"
+            [disabled]="role == 'Guest'"
+            ><mat-icon>remove_red_eye</mat-icon></button>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="this.fakturaStore.openAddFakture">
+    <app-dodawanie></app-dodawanie>
+</div>
+
+<div *ngIf="this.fakturaStore.showFakture">
+    <app-przeglad></app-przeglad>
+</div>
+
+
+

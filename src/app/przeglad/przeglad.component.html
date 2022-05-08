@@ -1,0 +1,44 @@
+<div class="przeglad">
+    <button class="background" (click)="showFakture()"></button>
+    <div class="form">
+        <div *ngIf="faktura; else sellerInfo">
+            <div class="header">
+                <p class="title">Przeglad Faktry</p>
+                <button class="closeBtn" (click)="showFakture()">x</button>
+            </div>
+            <div class="fakturaFormHeader">
+                <p style="border-radius: 12px 0 0 0">Data</p>
+                <p>Numer Faktury</p>
+                <p>Sprzedawca</p>
+                <p style="border-radius: 0 12px 0 0">Kwota</p>
+            </div>
+            <div *ngIf="faktura" class="fakturaForm">
+                <p>{{faktura.date | date: 'mediumDate'}}</p>
+                <p>{{faktura.numer}}</p>
+                <div>
+                    <p>Nazwa: {{faktura.sprzedawca.nazwa}}</p>
+                    <p>Id: {{faktura.sprzedawca.id}}</p>
+                    <p>Adres: {{faktura.sprzedawca.adres}}</p>
+                </div>
+                <p>{{faktura.kwota}}</p>
+            </div>
+        </div>
+
+        <ng-template #sellerInfo>
+            <div class="header">
+                <p class="title">Przeglad Sprzedawcy</p>
+                <button class="closeBtn" (click)="showFakture()">x</button>
+            </div>
+            <div class="sellerFormHeader">
+                <p style="border-radius: 12px 0 0 0">Id</p>
+                <p>Nazwa</p>
+                <p style="border-radius: 0 12px 0 0">Adres</p>
+            </div>
+            <div *ngIf="seller" class="sellerForm">
+                <p>{{seller.id}}</p>
+                <p>{{seller.nazwa}}</p>
+                <p>{{seller.adres}}</p>
+            </div>
+        </ng-template>
+    </div>
+</div>

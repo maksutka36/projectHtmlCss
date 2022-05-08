@@ -1,0 +1,83 @@
+<div class="dodawanie">    
+    <button class="background" (click)="onReset()"></button>
+    <div class="form">
+        <p style="font-size: 1.4em; margin-left: 4%;">Dodawanie Faktury</p>
+        <form [formGroup]="addForm" (submit)="onAddFakture()">
+            <div class="addForm">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Data wystawienia faktury</mat-label>
+                    <input 
+                    matInput [matDatepicker]="picker"
+                    placeholder="01/02/2022" 
+                    formControlName="date"
+                    autocomplete="off">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                
+                <div>
+                    <mat-form-field style="width: 100%" appearance="fill">
+                        <mat-label>Numer faktury</mat-label>
+                        <input 
+                        matInput 
+                        placeholder="412412" 
+                        type="text"
+                        autocomplete="off"
+                        formControlName="numer">
+                    </mat-form-field>
+                    <span *ngIf="uniqueError" style="color: red">Numer must be unique</span>
+                </div>
+
+                <div class="sellers">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sprzedawca</mat-label>
+                        <mat-select 
+                        formControlName="sprzedawca"
+                        [(value)]="selectedSeller">
+                            <div *ngFor="let item of sprzedawcy">       
+                                <mat-option 
+                                value="{{item.nazwa}}"
+                                (click)="onSelector(item.nazwa)"
+                                >{{item.nazwa}}</mat-option>
+                            </div>
+                        </mat-select>
+                    </mat-form-field> 
+                <div *ngIf="selectedSellerInfo" class="sellerInfo">
+                    <p>Id: {{selectedSellerInfo.id}}</p>
+                    <p>Nazwa: {{selectedSellerInfo.nazwa}}</p>
+                    <p>Adres: {{selectedSellerInfo.adres}}</p>
+                </div>
+                </div>
+        
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Kwota</mat-label>
+                    <input 
+                    matInput 
+                    placeholder="Kwota" 
+                    type="text"
+                    formControlName="kwota"
+                    autocomplete="off">
+                </mat-form-field>
+
+            </div>
+
+            <div class="akcjeBtn">
+                <button 
+                mat-raised-button
+                color="primary" 
+                [disabled]="addForm.invalid"
+                type="submit"
+                >Zapisz</button>
+
+                <button 
+                mat-raised-button 
+                color="warn" 
+                (click)="onReset()"
+                style=" margin-left: 3%;"
+                >Anuluj</button>
+            </div>
+        </form>
+    </div>
+</div>

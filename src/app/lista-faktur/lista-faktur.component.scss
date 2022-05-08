@@ -1,0 +1,104 @@
+.listaFaktur{
+    margin: 5%;
+    width: 90%;
+    height: auto;
+}
+
+.columnsNames{
+    margin-top: 5%;
+    border-radius: 12px 12px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 10%;
+    column-gap: 2px;
+    background-color: rgba(128, 128, 128, 0.5);
+
+    & p{
+        height: 50px;
+        margin: 0;
+        background-color: rgb(75, 75, 247);
+        font-family: 'Fredoka', sans-serif;
+        font-size: 1.2em;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+.columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 10%;
+    column-gap: 2px;
+    background-color: rgba(128, 128, 128, 0.5);
+
+    & > *{
+        border: none;
+        height: 50px;
+        margin: 0;
+        background-color: rgb(255, 250, 175);
+        font-family: 'Fredoka', sans-serif;
+        font-size: 1.2em;
+        color: rgb(68, 68, 68);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & > button{
+        cursor: pointer;
+        
+    }
+}
+
+.additionBar{
+    border-radius: 100px;
+    background-color: rgb(75, 75, 247);
+    box-shadow: 0px 2px 15px 0px rgb(75, 75, 247);
+    height: 70px;
+    display: grid;
+    grid-template-columns: 3% 30% 58% 9%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        " . filter . addBtn";
+
+        & > *{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+}
+
+.btnSpace{
+    grid-area: addBtn;
+}
+
+.addFaktureBtn{
+    height: 60px;
+    width: 60px;
+    border-radius: 100px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.filter{
+    grid-area: filter;
+}
+
+.mat-form-field {
+    background-color: white;
+    height: 60px;
+    border-radius: 5px;
+}

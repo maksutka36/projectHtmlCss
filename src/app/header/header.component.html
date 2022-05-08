@@ -1,0 +1,13 @@
+<div class="header">
+    <button (click)="onAccount()"><mat-icon>account_circle</mat-icon></button>
+    <p class="title">Hello, {{role}}</p>
+    <div class="space"></div>
+    <div *ngIf="role == 'Admin'" class="adminNavigate">   
+        <button (click)="onSurf('sellers')">Lista Sprzedawc</button>
+        <button (click)="onSurf('')">Lista Faktur</button>
+    </div>
+</div>
+
+<div *ngIf="this.accountService.accountScreen">
+    <app-account></app-account>
+</div>

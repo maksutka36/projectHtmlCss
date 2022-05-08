@@ -1,0 +1,21 @@
+<div class="accountScreen">
+    <button class="background" (click)="colse()"></button>
+    <div class="form">
+        <div class="content">
+            <p style="font-size: 1.4em;">Choose Role</p>
+            <mat-form-field appearance="fill" style="margin-top: 20%">
+                <mat-label>User type</mat-label>
+                <mat-select>
+                    <div *ngFor="let item of roles">       
+                        <mat-option 
+                        value="{{item}}"
+                        (click)="onChooseRole(item)"
+                        >{{item}}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field> 
+        </div>
+    </div>
+
+</div>
+
